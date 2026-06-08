@@ -1,0 +1,156 @@
+{
+  "examples": [
+    {
+      "user_id": 539935,
+      "risk_probability": 0.9890438665922611,
+      "target": 1,
+      "recommendations": [
+        {
+          "priority": "critical",
+          "kind": "liquidity_warning",
+          "title": "Wysokie ryzyko utraty plynnosci",
+          "message": "Model widzi sygnaly zblizone do niewyplacalnosci. Wstrzymaj wydatki uznaniowe i skup sie na dodatnim przeplywie gotowki.",
+          "category": null,
+          "suggested_amount": 1102.81,
+          "rationale": "Prawdopodobienstwo ryzyka: 98.9%."
+        },
+        {
+          "priority": "high",
+          "kind": "category_saving",
+          "title": "Ogranicz: zakupy detaliczne",
+          "message": "To najwieksza elastyczna kategoria w profilu uzytkownika. Ustaw limit i przenies zaoszczedzona kwote na bufor.",
+          "category": "shopping",
+          "suggested_amount": 116.29,
+          "rationale": "Wydatki w kategorii: 581.43."
+        },
+        {
+          "priority": "low",
+          "kind": "subscription_review",
+          "title": "Przejrzyj subskrypcje",
+          "message": "Subskrypcje sa dobrym kandydatem do szybkiej optymalizacji, bo zwykle nie wymagaja zmiany podstawowego stylu zycia.",
+          "category": "subscriptions",
+          "suggested_amount": 44.98,
+          "rationale": "Suma subskrypcji: 179.90."
+        }
+      ]
+    },
+    {
+      "user_id": 544236,
+      "risk_probability": 0.987869093852961,
+      "target": 1,
+      "recommendations": [
+        {
+          "priority": "critical",
+          "kind": "liquidity_warning",
+          "title": "Wysokie ryzyko utraty plynnosci",
+          "message": "Model widzi sygnaly zblizone do niewyplacalnosci. Wstrzymaj wydatki uznaniowe i skup sie na dodatnim przeplywie gotowki.",
+          "category": null,
+          "suggested_amount": 2597.76,
+          "rationale": "Prawdopodobienstwo ryzyka: 98.8%."
+        },
+        {
+          "priority": "high",
+          "kind": "category_saving",
+          "title": "Ogranicz: zakupy detaliczne",
+          "message": "To najwieksza elastyczna kategoria w profilu uzytkownika. Ustaw limit i przenies zaoszczedzona kwote na bufor.",
+          "category": "shopping",
+          "suggested_amount": 180.5,
+          "rationale": "Wydatki w kategorii: 902.48."
+        }
+      ]
+    },
+    {
+      "user_id": 404677,
+      "risk_probability": 0.9871493156579572,
+      "target": 0,
+      "recommendations": [
+        {
+          "priority": "critical",
+          "kind": "liquidity_warning",
+          "title": "Wysokie ryzyko utraty plynnosci",
+          "message": "Model widzi sygnaly zblizone do niewyplacalnosci. Wstrzymaj wydatki uznaniowe i skup sie na dodatnim przeplywie gotowki.",
+          "category": null,
+          "suggested_amount": 144.95,
+          "rationale": "Prawdopodobienstwo ryzyka: 98.7%."
+        },
+        {
+          "priority": "high",
+          "kind": "budget_reduction",
+          "title": "Zatrzymaj ujemny przeplyw gotowki",
+          "message": "Wydatki przewyzszaja wplywy w analizowanym okresie. Najpierw zetnij kategorie elastyczne, zanim zwiekszy sie saldo zadluzenia.",
+          "category": null,
+          "suggested_amount": 144.95,
+          "rationale": "Luka przeplywow: 144.95."
+        },
+        {
+          "priority": "high",
+          "kind": "category_saving",
+          "title": "Ogranicz: zakupy detaliczne",
+          "message": "To najwieksza elastyczna kategoria w profilu uzytkownika. Ustaw limit i przenies zaoszczedzona kwote na bufor.",
+          "category": "shopping",
+          "suggested_amount": 18.13,
+          "rationale": "Wydatki w kategorii: 90.64."
+        }
+      ]
+    },
+    {
+      "user_id": 537820,
+      "risk_probability": 0.9833899123735329,
+      "target": 1,
+      "recommendations": [
+        {
+          "priority": "critical",
+          "kind": "liquidity_warning",
+          "title": "Wysokie ryzyko utraty plynnosci",
+          "message": "Model widzi sygnaly zblizone do niewyplacalnosci. Wstrzymaj wydatki uznaniowe i skup sie na dodatnim przeplywie gotowki.",
+          "category": null,
+          "suggested_amount": 1223.68,
+          "rationale": "Prawdopodobienstwo ryzyka: 98.3%."
+        },
+        {
+          "priority": "high",
+          "kind": "category_saving",
+          "title": "Ogranicz: restauracje i jedzenie poza domem",
+          "message": "To najwieksza elastyczna kategoria w profilu uzytkownika. Ustaw limit i przenies zaoszczedzona kwote na bufor.",
+          "category": "dining",
+          "suggested_amount": 43.72,
+          "rationale": "Wydatki w kategorii: 218.60."
+        }
+      ]
+    },
+    {
+      "user_id": 539933,
+      "risk_probability": 0.9831989256676107,
+      "target": 1,
+      "recommendations": [
+        {
+          "priority": "critical",
+          "kind": "liquidity_warning",
+          "title": "Wysokie ryzyko utraty plynnosci",
+          "message": "Model widzi sygnaly zblizone do niewyplacalnosci. Wstrzymaj wydatki uznaniowe i skup sie na dodatnim przeplywie gotowki.",
+          "category": null,
+          "suggested_amount": 682.25,
+          "rationale": "Prawdopodobienstwo ryzyka: 98.3%."
+        },
+        {
+          "priority": "high",
+          "kind": "budget_reduction",
+          "title": "Zatrzymaj ujemny przeplyw gotowki",
+          "message": "Wydatki przewyzszaja wplywy w analizowanym okresie. Najpierw zetnij kategorie elastyczne, zanim zwiekszy sie saldo zadluzenia.",
+          "category": null,
+          "suggested_amount": 682.25,
+          "rationale": "Luka przeplywow: 682.25."
+        },
+        {
+          "priority": "high",
+          "kind": "category_saving",
+          "title": "Ogranicz: zakupy detaliczne",
+          "message": "To najwieksza elastyczna kategoria w profilu uzytkownika. Ustaw limit i przenies zaoszczedzona kwote na bufor.",
+          "category": "shopping",
+          "suggested_amount": 164.35,
+          "rationale": "Wydatki w kategorii: 821.73."
+        }
+      ]
+    }
+  ]
+}

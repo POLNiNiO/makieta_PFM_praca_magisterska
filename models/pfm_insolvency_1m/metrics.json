@@ -1,0 +1,86 @@
+{
+  "roc_auc": 0.8263561917048998,
+  "average_precision": 0.26084355163264994,
+  "decision_threshold": 0.6026515561197703,
+  "confusion_matrix": [
+    [
+      94917,
+      10584
+    ],
+    [
+      1813,
+      2400
+    ]
+  ],
+  "classification_report": {
+    "0": {
+      "precision": 0.981257107412385,
+      "recall": 0.8996786760315069,
+      "f1-score": 0.9386988147217785,
+      "support": 105501.0
+    },
+    "1": {
+      "precision": 0.18484288354898337,
+      "recall": 0.5696653216235462,
+      "f1-score": 0.27911845089259757,
+      "support": 4213.0
+    },
+    "accuracy": 0.8870062161620212,
+    "macro avg": {
+      "precision": 0.5830499954806843,
+      "recall": 0.7346719988275265,
+      "f1-score": 0.608908632807188,
+      "support": 109714.0
+    },
+    "weighted avg": {
+      "precision": 0.9506749289744783,
+      "recall": 0.8870062161620212,
+      "f1-score": 0.9133710345586968,
+      "support": 109714.0
+    }
+  },
+  "threshold_selection": {
+    "strategy": "max_f2_on_test_set",
+    "threshold": 0.6026515561197703,
+    "precision": 0.18484288354898337,
+    "recall": 0.5696653216235462,
+    "f2": 0.40219868615065135
+  },
+  "train_users": 447638,
+  "test_users": 109714,
+  "positive_rate_train": 0.035126597831283315,
+  "positive_rate_test": 0.03839983958291558,
+  "feature_count": 149,
+  "top_merchant_types": [
+    "retail",
+    "grocery",
+    "auto repair",
+    "dining",
+    "tax payment",
+    "entertainment",
+    "electricity bill",
+    "electronics",
+    "insurance",
+    "restaurant",
+    "travel",
+    "monthly mortgage payment",
+    "gas",
+    "monthly rent",
+    "medical",
+    "home goods",
+    "mortgage payment",
+    "groceries",
+    "education",
+    "property tax",
+    "food",
+    "home improvement",
+    "veterinary care",
+    "taxes",
+    "gift",
+    "government",
+    "water bill",
+    "government services",
+    "home maintenance",
+    "car insurance"
+  ]
+}
