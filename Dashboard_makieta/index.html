@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PFM Dashboard</title>
+    <link rel="icon" href="/assets/pfm-mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <svg class="svg-sprite" aria-hidden="true">
+      <symbol id="icon-plus" viewBox="0 0 24 24">
+        <path d="M12 5v14" />
+        <path d="M5 12h14" />
+      </symbol>
+      <symbol id="icon-refresh" viewBox="0 0 24 24">
+        <path d="M20 12a8 8 0 1 1-2.3-5.7" />
+        <path d="M20 4v6h-6" />
+      </symbol>
+      <symbol id="icon-trash" viewBox="0 0 24 24">
+        <path d="M3 6h18" />
+        <path d="M8 6V4h8v2" />
+        <path d="M19 6l-1 14H6L5 6" />
+      </symbol>
+      <symbol id="icon-alert" viewBox="0 0 24 24">
+        <path d="M12 3 2.5 20h19L12 3Z" />
+        <path d="M12 9v5" />
+        <path d="M12 17h.01" />
+      </symbol>
+      <symbol id="icon-wallet" viewBox="0 0 24 24">
+        <path d="M4 7h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h13" />
+        <path d="M16 13h.01" />
+      </symbol>
+      <symbol id="icon-chart" viewBox="0 0 24 24">
+        <path d="M4 19V5" />
+        <path d="M4 19h16" />
+        <path d="m7 15 4-4 3 3 5-7" />
+      </symbol>
+      <symbol id="icon-list" viewBox="0 0 24 24">
+        <path d="M8 6h13" />
+        <path d="M8 12h13" />
+        <path d="M8 18h13" />
+        <path d="M3 6h.01" />
+        <path d="M3 12h.01" />
+        <path d="M3 18h.01" />
+      </symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+      </symbol>
+    </svg>
+
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Nawigacja">
+        <a class="brand" href="/" aria-label="PFM Dashboard">
+          <img src="/assets/pfm-mark.svg" alt="" />
+          <span>PFM</span>
+        </a>
+        <nav class="nav-list">
+          <a class="nav-item active" href="#risk"><svg><use href="#icon-shield"></use></svg><span>Ryzyko</span></a>
+          <a class="nav-item" href="#entry"><svg><use href="#icon-plus"></use></svg><span>Dodaj dane</span></a>
+          <a class="nav-item" href="#recommendations"><svg><use href="#icon-list"></use></svg><span>Tipy</span></a>
+          <a class="nav-item" href="#balance"><svg><use href="#icon-wallet"></use></svg><span>Bilans</span></a>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Personal Finance Management</p>
+            <h1>Twój pusty dashboard finansowy</h1>
+          </div>
+          <div class="top-actions">
+            <button class="icon-button with-label" id="refreshButton" type="button">
+              <svg aria-hidden="true"><use href="#icon-refresh"></use></svg>
+              <span>Odśwież</span>
+            </button>
+            <button class="icon-button danger" id="resetButton" type="button">
+              <svg aria-hidden="true"><use href="#icon-trash"></use></svg>
+              <span>Wyczyść</span>
+            </button>
+          </div>
+        </header>
+
+        <section class="status-strip" aria-label="Status modelu">
+          <div><span class="status-label">Model</span><strong id="modelTask">-</strong></div>
+          <div><span class="status-label">ROC-AUC</span><strong id="metricAuc">-</strong></div>
+          <div><span class="status-label">Recall ryzyka</span><strong id="metricRecall">-</strong></div>
+          <div><span class="status-label">Próg</span><strong id="metricThreshold">-</strong></div>
+        </section>
+
+        <section class="dashboard-grid" id="risk">
+          <article class="panel risk-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Ocena modelu</p>
+                <h2>Ryzyko niewypłacalności</h2>
+              </div>
+              <span class="badge" id="riskBadge">Brak danych</span>
+            </div>
+            <div class="risk-layout">
+              <div class="risk-gauge" id="riskGauge" role="img" aria-label="Poziom ryzyka">
+                <div class="gauge-inner">
+                  <span id="riskValue">-</span>
+                  <small id="riskLabel">ryzyko</small>
+                </div>
+              </div>
+              <div class="risk-copy">
+                <p id="riskSummary">Dodaj przychody i wydatki, aby uruchomić scoring modelem.</p>
+                <div class="mini-chart" id="cashflowChart" aria-label="Przepływ gotówki"></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="metric-card"><span>Wpływy miesięczne</span><strong id="monthlyInflow">0 zł</strong><small id="inflowCaption">Brak danych</small></article>
+          <article class="metric-card"><span>Wydatki miesięczne</span><strong id="monthlyOutflow">0 zł</strong><small id="outflowCaption">Brak danych</small></article>
+          <article class="metric-card"><span>Wynik netto</span><strong id="monthlyNet">0 zł</strong><small id="marginCaption">-</small></article>
+        </section>
+
+        <section class="data-entry" id="entry">
+          <article class="panel">
+            <div class="panel-heading">
+              <div><p class="eyebrow">Transakcje</p><h2>Dodaj przychód albo wydatek</h2></div>
+            </div>
+            <form class="form-grid" id="transactionForm">
+              <label>Typ<select name="type" id="transactionType"><option value="expense">Wydatek</option><option value="income">Przychód</option></select></label>
+              <label>Data<input type="date" name="date" required /></label>
+              <label>Kategoria<input name="category" list="categoryOptions" placeholder="np. Podróże" required /></label>
+              <label>Kwota<input name="amount" data-money inputmode="decimal" placeholder="0,00 zł" required /></label>
+              <label>Opis<input name="merchant_name" placeholder="np. pensja, czynsz, bilet lotniczy" /></label>
+              <label>Kanał<select name="channel"><option value="card">Karta</option><option value="online">Online</option><option value="transfer">Przelew</option><option value="cash">Gotówka</option></select></label>
+              <button class="primary-action" type="submit"><svg><use href="#icon-plus"></use></svg><span>Dodaj transakcję</span></button>
+            </form>
+            <datalist id="categoryOptions"></datalist>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading">
+              <div><p class="eyebrow">Kategorie</p><h2>Dodaj własną kategorię</h2></div>
+            </div>
+            <form class="form-grid compact" id="categoryForm">
+              <label>Nazwa kategorii<input name="label" placeholder="np. Sprzęt sportowy" required /></label>
+              <label>Dostępna dla<select name="scope"><option value="expense">Wydatków</option><option value="income">Przychodów</option><option value="both">Wydatków i przychodów</option></select></label>
+              <label>Typ modelu<input name="merchant_type" placeholder="opcjonalnie, np. retail" /></label>
+              <button class="primary-action" type="submit"><svg><use href="#icon-plus"></use></svg><span>Dodaj kategorię</span></button>
+            </form>
+          </article>
+        </section>
+
+        <section class="data-entry" id="balance">
+          <article class="panel">
+            <div class="panel-heading">
+              <div><p class="eyebrow">Aktywa</p><h2>Dodaj aktywo finansowe</h2></div>
+            </div>
+            <form class="form-grid compact" id="assetForm">
+              <label>Nazwa<input name="name" placeholder="np. konto oszczędnościowe" required /></label>
+              <label>Typ<select name="type"><option value="cash">Gotówka / konto</option><option value="deposit">Lokata</option><option value="bonds">Obligacje</option><option value="fund">Fundusz / ETF</option><option value="other">Inne</option></select></label>
+              <label>Wartość<input name="amount" data-money inputmode="decimal" placeholder="0,00 zł" required /></label>
+              <label>Płynność<select name="liquidity"><option value="high">Wysoka</option><option value="medium">Średnia</option><option value="low">Niska</option></select></label>
+              <button class="primary-action" type="submit"><svg><use href="#icon-plus"></use></svg><span>Dodaj aktywo</span></button>
+            </form>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading">
+              <div><p class="eyebrow">Zobowiązania</p><h2>Dodaj kredyt lub dług</h2></div>
+            </div>
+            <form class="form-grid compact" id="liabilityForm">
+              <label>Nazwa<input name="name" placeholder="np. kredyt hipoteczny" required /></label>
+              <label>Typ<select name="type"><option value="mortgage">Hipoteczny</option><option value="consumer_loan">Gotówkowy</option><option value="credit_card">Karta kredytowa</option><option value="leasing">Leasing</option><option value="other">Inne</option></select></label>
+              <label>Saldo<input name="balance" data-money inputmode="decimal" placeholder="0,00 zł" required /></label>
+              <label>Rata miesięczna<input name="monthly_payment" data-money inputmode="decimal" value="0,00 zł" /></label>
+              <label>Oprocentowanie %<input name="interest_rate" type="number" min="0" step="0.01" value="0" /></label>
+              <button class="primary-action" type="submit"><svg><use href="#icon-plus"></use></svg><span>Dodaj zobowiązanie</span></button>
+            </form>
+          </article>
+        </section>
+
+        <section class="two-column">
+          <article class="panel" id="recommendations">
+            <div class="panel-heading">
+              <div><p class="eyebrow">Friendly Tips</p><h2>Rekomendacje i sygnały</h2></div>
+            </div>
+            <p class="disclaimer" id="disclaimer"></p>
+            <div class="recommendation-list" id="recommendationList"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading">
+              <div><p class="eyebrow">Struktura</p><h2>Kategorie wydatków</h2></div>
+              <span class="panel-note" id="categoryTotal">0 zł</span>
+            </div>
+            <div class="category-list" id="categoryList"></div>
+          </article>
+        </section>
+
+        <section class="two-column lower-grid">
+          <article class="panel">
+            <div class="panel-heading">
+              <div><p class="eyebrow">Wpisane dane</p><h2>Transakcje</h2></div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Data</th><th>Typ</th><th>Kategoria</th><th>Kwota</th><th></th></tr></thead>
+                <tbody id="transactionTable"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading">
+              <div><p class="eyebrow">Bilans</p><h2>Aktywa i zobowiązania</h2></div>
+            </div>
+            <div class="balance-summary">
+              <div><span>Aktywa</span><strong id="assetsTotal">0 zł</strong></div>
+              <div><span>Zobowiązania</span><strong id="liabilitiesTotal">0 zł</strong></div>
+              <div><span>Wartość netto</span><strong id="netWorth">0 zł</strong></div>
+              <div><span>Poduszka</span><strong id="bufferMonths">0 mies.</strong></div>
+            </div>
+            <div class="stack-list" id="assetList"></div>
+            <div class="stack-list" id="liabilityList"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="/app.js"></script>
+  </body>
+</html>
